@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Notas y Promedio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+        h1, h2 {
+            color: #333;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .error-hidden {
+            display: none;
+            color: #d9534f;
+            background-color: #f9dede;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+            text-align: center;
+            font-size: 14px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+        li {
+            padding: 10px;
+            margin-bottom: 8px;
+            background: #f9f9f9;
+            border-left: 5px solid #ccc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 3px;
+        }
+        li.aprobado {
+            border-left-color: #28a745;
+        }
+        li.desaprobado {
+            border-left-color: #dc3545;
+        }
+        .delete-btn {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            width: auto;
+        }
+        .delete-btn:hover {
+            background-color: #c82333;
+        }
+        #statsContainer {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+        #clearAllBtn {
+            background-color: #6c757d;
+            margin-top: 10px;
+        }
+        #clearAllBtn:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <h1>Registro de Notas</h1>
+        
+        <form id="studentForm">
+            <div class="form-group">
+                <label for="studentName">Nombre del Estudiante:</label>
+                <input type="text" id="studentName" placeholder="Ej. Ana Pérez" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="studentScore">Nota (0 - 20):</label>
+                <input type="number" id="studentScore" min="0" max="20" step="0.1" placeholder="Ej. 15.5" required>
+            </div>
+            
+            <button type="submit" id="addBtn">Agregar Nota</button>
+        </form>
+
+        <div id="errorMsg" class="error-hidden">Por favor, introduce un nombre válido y una nota entre 0 y 20.</div>
+
+        <section class="results-section">
+            <h2>Lista de Estudiantes</h2>
+            <ul id="studentList"></ul>
+            <div id="statsContainer">
+                <p>Promedio del curso: <span id="averageScore">0.0</span></p>
+                <button id="clearAllBtn">Limpiar Todo</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
